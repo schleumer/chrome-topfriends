@@ -1,0 +1,13 @@
+{
+	"folders":
+	[
+		{
+      "name": "Top Friends",
+			"path": "./src/"
+		},
+    {
+      "name": "Project",
+      "path": "./"
+    }
+	]
+}

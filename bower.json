@@ -1,0 +1,16 @@
+{
+  "name": "chrome-topfriends",
+  "version": "0.0.0",
+  "homepage": "https://github.com/schleumer/chrome-topfriends",
+  "authors": [
+    "Wesley Schleumer <wesley.schleumer@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
