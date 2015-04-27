@@ -1,26 +1,28 @@
-gulp = require 'gulp'
-browserify = require 'browserify'
-gutil = require 'gulp-util'
-sourcemaps = require 'gulp-sourcemaps'
-transform = require 'vinyl-transform'
-uglify = require 'gulp-uglify'
-jade = require 'gulp-jade'
-watch = require 'gulp-watch'
-watchify = require 'watchify'
-del = require 'del'
-concat = require 'gulp-concat'
-less = require 'gulp-less'
-path = require 'path'
-gulpLiveScript = require 'gulp-livescript'
-merge = require 'merge-stream'
-streamqueue = require 'streamqueue'
-source = require 'vinyl-source-stream'
-fs = require 'fs'
-plumber = require 'gulp-plumber'
-notify = require 'gulp-notify'
-changed = require 'gulp-changed'
-insert = require 'gulp-insert'
-replace = require 'gulp-replace'
+require! {
+  'gulp'
+  'browserify'
+  'gulp-util' : gutil
+  'gulp-sourcemaps' : sourcemaps
+  'vinyl-transform' : transform
+  'gulp-uglify' : uglify
+  'gulp-jade' : jade
+  'gulp-watch' : watch
+  'watchify'
+  'del'
+  'gulp-concat' : concat
+  'gulp-less' : less
+  'path'
+  'gulp-livescript' : gulp-live-script
+  'merge-stream' : merge
+  'streamqueue' : streamqueue
+  'vinyl-source-stream' : source
+  'fs'
+  'gulp-plumber' : plumber
+  'gulp-notify' : notify
+  'gulp-changed' : changed
+  'gulp-insert' : insert
+  'gulp-replace' : replace
+}
 
 gulp.task 'clean:scripts', (cb) -> del ['dist/js'], cb
 
@@ -118,23 +120,23 @@ gulp.task 'connect', [
 # Watch stuffs
 
 gulp.task 'popup-ls-watch', ->
-  watch('src/livescript/**/*.ls', ['popup-ls'], -> 
+  watch('src/livescript/**/*.ls', ['popup-ls'], ->
     gulp.start('popup-ls'))
 
 gulp.task 'background-ls-watch', ->
-  watch('src/livescript/**/*.ls', ['background-ls', 'background-prepend'], -> 
+  watch('src/livescript/**/*.ls', ['background-ls', 'background-prepend'], ->
     gulp.start(['background-ls', 'background-prepend']))
 
 gulp.task 'injected-ls-watch', ->
-  watch('src/livescript/**/*.ls', ['injected-ls'], -> 
+  watch('src/livescript/**/*.ls', ['injected-ls'], ->
     gulp.start('injected-ls'))
 
 gulp.task 'stylesheet-watch', ['stylesheet'], ->
-  watch('src/less/**/*.less', -> 
+  watch('src/less/**/*.less', ->
     gulp.start('stylesheet'))
 
 gulp.task 'templates-watch', ['templates'], ->
-  watch('src/jade/**/*.jade', -> 
+  watch('src/jade/**/*.jade', ->
     gulp.start('templates'))
 
 gulp.task 'clean', [
