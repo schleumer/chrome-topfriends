@@ -19,37 +19,41 @@ chrome.runtime.onConnect.addListener ((port) !-> router.bind(port))
 
 chrome.tabs.query {}, (tabs) ->
   tabs.forEach ((currentTab) ->
-    chrome.browserAction.disable currentTab.id
-    chrome.browserAction.setIcon {
-      tabId: currentTab.id
-      path: chrome.extension.getURL 'icons/19-disabled.png'
-    })
+    chrome.pageAction.hide currentTab.id
+    #chrome.pageAction.setIcon {
+    #  tabId: currentTab.id
+    #  path: chrome.extension.getURL 'icons/19-disabled.png'
+    #}
+  )
 
 chrome.tabs.query {url: "*://*.facebook.com/*"}, (tabs) ->
   tabs.forEach ((currentTab) ->
-    chrome.browserAction.enable currentTab.id
-    chrome.browserAction.setIcon {
-      tabId: currentTab.id
-      path: chrome.extension.getURL 'icons/19.png'
-    })
+    chrome.pageAction.show currentTab.id
+    #chrome.pageAction.setIcon {
+    #  tabId: currentTab.id
+    #  path: chrome.extension.getURL 'icons/19.png'
+    #}
+  )
 
 changeIcon = ->
   # TODO: it's ugly and i'll find a better way
   chrome.tabs.query { active: true }, (tabs) ->
     tabs.forEach ((currentTab) ->
-      chrome.browserAction.disable currentTab.id
-      chrome.browserAction.setIcon {
-        tabId: currentTab.id
-        path: chrome.extension.getURL 'icons/19-disabled.png'
-      })
+      chrome.pageAction.hide currentTab.id
+      #chrome.pageAction.setIcon {
+      #  tabId: currentTab.id
+      #  path: chrome.extension.getURL 'icons/19-disabled.png'
+      #}
+    )
 
   chrome.tabs.query { url: "*://*.facebook.com/*", active: true }, (tabs) ->
     tabs.forEach ((currentTab) ->
-      chrome.browserAction.enable currentTab.id
-      chrome.browserAction.setIcon {
-        tabId: currentTab.id
-        path: chrome.extension.getURL 'icons/19.png'
-      })
+      chrome.pageAction.show currentTab.id
+      #chrome.pageAction.setIcon {
+      #  tabId: currentTab.id
+      #  path: chrome.extension.getURL 'icons/19.png'
+      #}
+    )
 
 #listen for new tab to be activated
 chrome.tabs.onActivated.addListener ((activeInfo) -> changeIcon!)
