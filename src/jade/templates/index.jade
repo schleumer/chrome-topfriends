@@ -16,7 +16,7 @@ div.index-view
     div.center-box
       div.text-center
         form(target="_blank", action=api_address + "/do", method="post")
-          button.q-button.q-button-primary(type="submit", ng-click="send()") Gerar imagem
+          button.q-button.q-button-primary.button-xlarge(type="submit", ng-click="send()") Gerar imagem
           //- this might be just wrong
           input(type="hidden", name="data", value="{{ getThreads() }}")
         button.q-button(type="button", ng-click="showSharedData()") 
