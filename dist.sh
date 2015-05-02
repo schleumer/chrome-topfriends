@@ -1,3 +1,5 @@
+#!/bin/sh
+
 gulp dist-only
 
 rm -Rfv topfriends-dist.zip
