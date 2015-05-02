@@ -43,3 +43,5 @@ router.on('requestCounter', (message) ->
   requestCounter((info, err) ->
     router.post('popup/responseCounter', err or info)))
 
+router.post('popup/YEAH_SCIENCE', { message: 'YEAH' })
+

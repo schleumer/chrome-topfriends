@@ -29,6 +29,9 @@ app.run ['$rootScope', ($rootScope) ->
 
   router.on('pong', ->
     $rootScope.$broadcast('pong', null))
+
+  router.on('YEAH_SCIENCE', ->
+    $rootScope.$broadcast('YEAH_SCIENCE', null))
 ]
 
 app.controller('IndexController', 
@@ -51,6 +54,10 @@ app.controller('IndexController',
         $scope.loading = 98
 
       setTimeout (-> location.reload!), 10000
+
+      deregister = $rootScope.$on 'YEAH_SCIENCE' ->
+        location.reload!
+        deregister!
 
       tabs |> each (tab) ->
         chrome.tabs.reload(tab.id)

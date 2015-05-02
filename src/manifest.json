@@ -1,9 +1,9 @@
 {
   "name": "Top Friends",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "manifest_version": 2,
   "description": "Cria um ranking com os amigos que você mais conversa no Facebook.",
-  "homepage_url": "https://github.com/schleumer/chrome-topfriends",
+  "homepage_url": "http://topfriends.biz/from-popup",
   "icons": {
     "16": "icons/16.png",
     "48": "icons/48.png",
