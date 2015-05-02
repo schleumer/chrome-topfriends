@@ -4,23 +4,25 @@ div.index-view
 
   div.loading-text
     div.text-center(ng-if="loading == 1")
-      b Verificando disponibilidade...
+      b verificando disponibilidade...
     
     div.text-center(ng-if="loading == 2")
-      b Pedindo informações ao Facebook...
+      b pedindo informações ao Facebook...
     
     div.text-center(ng-if="loading == 99")
-      b Houve um problema ao conectar com a aba aberta do Facebook, recarregue a aba do Facebook e tente novamente
+      b houve um problema ao conectar com a aba aberta do Facebook, recarregue a aba do Facebook e tente novamente
   
   div(ng-if="!loading")
     div.center-box
       div.text-center
+        div.alert.alert-primary(style="margin-bottom: 20px;")
+          div clique em <b>ir para o site</b> para visualizar com quem você mais conversou e postar seu top :)
         form(target="_blank", action=api_address + "/do", method="post")
-          button.q-button.q-button-primary.button-xlarge(type="submit", ng-click="send()") Gerar imagem
+          button.q-button.q-button-primary.button-xxlarge(type="submit", ng-click="send()") ir para o site
           //- this might be just wrong
           input(type="hidden", name="data", value="{{ getThreads() }}")
         button.q-button(type="button", ng-click="showSharedData()") 
-          | Visualizar dados
+          | visualizar dados
           b *
       
         footer
