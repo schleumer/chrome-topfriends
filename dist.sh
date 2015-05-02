@@ -1,8 +1,5 @@
-distfile="chrome-topfriends-dist.zip";
-prefix="chrome-topfriends/";
+gulp dist-only
 
-if [ -f $distfile ]; then
-  rm $distfile;
-fi
+rm -Rfv topfriends-dist.zip
 
-git archive HEAD --prefix=$prefix --format=zip -o $distfile;
+zip -r -9 topfriends-dist.zip dist/

@@ -8,9 +8,21 @@ div.index-view
     
     div.text-center(ng-if="loading == 2")
       b pedindo informações ao Facebook...
+
+    div.text-center(ng-if="loading == 98")
+      b recarregando abas do Facebook...
+      //- coisa feia, cara, para com isso
+      br
+      br
+      a.q-button.q-button-primary.button-xxlarge(type="button", ng-click="selfReload()") caso já tenha carregado clique aqui
     
     div.text-center(ng-if="loading == 99")
       b houve um problema ao conectar com a aba aberta do Facebook, recarregue a aba do Facebook e tente novamente
+      //- coisa feia, cara, para com isso
+      br
+      br
+      button.q-button.q-button-primary.button-xxlarge(type="button", ng-click="reloadFacebook()") recarregar
+
   
   div(ng-if="!loading")
     div.center-box

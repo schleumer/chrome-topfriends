@@ -42,6 +42,19 @@ app.controller('IndexController',
     # yeah
     $scope.is-shared-data-shown = not $scope.is-shared-data-shown
 
+  $scope.self-reload = ->
+    location.reload!
+
+  $scope.reload-facebook = ->
+    chrome.tabs.query {url: "*://*.facebook.com/*"}, (tabs) ->
+      $scope.$apply ->
+        $scope.loading = 98
+
+      setTimeout (-> location.reload!), 10000
+
+      tabs |> each (tab) ->
+        chrome.tabs.reload(tab.id)
+
   $rootScope.$on('pong', -> 
     $rootScope.requestCounter!
     $scope.$apply(-> $scope.loading = 2))

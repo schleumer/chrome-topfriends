@@ -41,9 +41,17 @@ gulp.task 'copy-fonts', ->
     .pipe(watch('./src/fonts/**/*', {base: './src/'}))
     .pipe(gulp.dest('./dist/'))
 
+gulp.task 'only-copy-fonts', ->
+  gulp.src('./src/fonts/**/*', {base: './src/'})
+    .pipe(gulp.dest('./dist/'))
+
 gulp.task 'copy-icons', ->
   gulp.src('./src/icons/**/*', {base: './src/'})
     .pipe(watch('./src/icons/**/*', {base: './src/'}))
+    .pipe(gulp.dest('./dist/'))
+
+gulp.task 'only-copy-icons', ->
+  gulp.src('./src/icons/**/*', {base: './src/'})
     .pipe(gulp.dest('./dist/'))
 
 gulp.task 'copy-manifest', ->
@@ -51,9 +59,17 @@ gulp.task 'copy-manifest', ->
     .pipe(watch('./src/manifest.json', {base: './src/'}))
     .pipe(gulp.dest('./dist/'))
 
+gulp.task 'only-copy-manifest', ->
+  gulp.src('./src/manifest.json', {base: './src/'})
+    .pipe(gulp.dest('./dist/'))
+
 gulp.task 'copy-locales', ->
   gulp.src('./src/_locales/**/*', {base: './src/'})
     .pipe(watch('./src/_locales/**/*', {base: './src/'}))
+    .pipe(gulp.dest('./dist/'))
+
+gulp.task 'only-copy-locales', ->
+  gulp.src('./src/_locales/**/*', {base: './src/'})
     .pipe(gulp.dest('./dist/'))
 
 gulp.task 'popup-ls', ->
@@ -87,6 +103,35 @@ gulp.task 'injected-ls', ->
     .pipe(source('injected.js'))
     .pipe(gulp.dest('./dist/js'))
     .pipe(notify(message: "Livescript compiled!", on-last: true))
+
+gulp.task 'only-popup-ls', ->
+  b = browserify("./src/livescript/popup.ls", watchify.args)
+  b.transform('liveify')
+  b.bundle()
+    .on('error', notify.onError("Error compiling livescript! \n <%= error.message %>"))
+    .pipe(source('popup.js'))
+    .pipe(gulp.dest('./dist/js'))
+    .pipe(notify(message: "Livescript compiled!", on-last: true))
+
+gulp.task 'only-background-ls', ->
+  b = browserify("./src/livescript/background.ls", watchify.args)
+  b.transform('liveify')
+  b.bundle()
+    .on('error', notify.onError("Error compiling livescript! \n <%= error.message %>"))
+    .pipe(source('background.js'))
+    .pipe(gulp.dest('./dist/js'))
+    .pipe(notify(message: "Livescript compiled!", on-last: true))
+
+gulp.task 'only-injected-ls', ->
+  b = browserify("./src/livescript/injected.ls", watchify.args)
+  b.transform('liveify')
+  b.bundle()
+    .on('error', notify.onError("Error compiling livescript! \n <%= error.message %>"))
+    .pipe(source('injected.js'))
+    .pipe(gulp.dest('./dist/js'))
+    .pipe(notify(message: "Livescript compiled!", on-last: true))
+
+
 
 gulp.task 'templates', ->
   locals = {
@@ -162,4 +207,16 @@ gulp.task 'default', [
   'copy-icons'
   'copy-manifest'
   'copy-locales'
+]
+
+gulp.task 'dist-only', [
+  'only-popup-ls'
+  'only-background-ls'
+  'only-injected-ls'
+  'stylesheet'
+  'templates'
+  'only-copy-fonts'
+  'only-copy-icons'
+  'only-copy-manifest'
+  'only-copy-locales'
 ]
