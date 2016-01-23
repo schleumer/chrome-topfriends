@@ -132,7 +132,7 @@ app.controller('IndexController',
     | null      => []
     | otherwise => $scope.data.threads 
       |> filter (.participants.length < 3)
-      |> map (.{participants, timestamp, message_count})
+      |> map (.{participants, timestamp, message_count, other_user_fbid})
       |> each((thread) -> 
         thread.real-participants = 
           thread.participants 

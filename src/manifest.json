@@ -12,8 +12,7 @@
   "default_locale": "pt_BR",
   "permissions": [
     "*://*.facebook.com/*",
-    "*://*.topfriends.biz/*",
-    "tabs"
+    "*://*.topfriends.biz/*"
   ],
   "page_action": {
     "default_popup": "popup.html",
