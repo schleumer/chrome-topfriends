@@ -135,8 +135,10 @@ gulp.task 'only-injected-ls', ->
 
 gulp.task 'templates', ->
   locals = {
-    #api_address: 'http://topfriends.biz'
-    api_address: 'http://localhost:3000'
+    api_address: 'http://topfriends.biz'
+    image_api_address: 'http://api.topfriends.biz'
+    #api_address: 'http://localhost:3000'
+    #image_api_address: 'http://localhost:3667'
   }
 
   jadeTask = jade {locals: locals, pretty: true}

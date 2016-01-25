@@ -1,6 +1,6 @@
 {
   "name": "Top Friends",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "manifest_version": 2,
   "description": "Cria um ranking com os amigos que você mais conversa no Facebook.",
   "homepage_url": "http://topfriends.biz/from-popup",
